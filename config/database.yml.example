@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: workout_journal_development
+
+test:
+  <<: *default
+  database: workout_journal_test
+
+production:
+  <<: *default
+  database: workout_journal_production
+  username: workout_journal
+  password: <%= ENV['WORKOUT_JOURNAL_DATABASE_PASSWORD'] %>
